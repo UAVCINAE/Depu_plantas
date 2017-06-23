@@ -55,7 +55,7 @@ MainWindow::~MainWindow()
 
 
 
-void MainWindow::on_ButtonOpenImage_clicked()
+void MainWindow::on_BOpenImage_clicked()
 {
     //Open file dialog
     QString fileName =  QFileDialog::getOpenFileName(this,"Open image","/home","All files (*.*);;JPEG (*.jpg *.jpeg);;TIFF (*.tif);;PNG files (*.png)");
