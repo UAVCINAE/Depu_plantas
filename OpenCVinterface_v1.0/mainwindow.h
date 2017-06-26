@@ -47,7 +47,7 @@ public:
 
 private slots:
 
-    void on_ButtonOpenImage_clicked();
+    void on_bOpenImage_clicked();
 
 };
 

@@ -15,7 +15,9 @@ using namespace caffe;
 
 /* Pair (label, confidence) representing a prediction. */
 typedef std::pair<string, float> Prediction;
-
+/**
+ * @brief The Classifier class
+ */
 class Classifier
 {
 public:

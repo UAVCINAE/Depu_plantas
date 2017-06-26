@@ -7,6 +7,14 @@ using namespace caffe;
 /* Pair (label, confidence) representing a prediction. */
 typedef std::pair<string, float> Prediction;
 
+/*!
+ * \brief Classifier::Classifier
+ * Single file classifier class
+ * \param model_file deploy.prototxt file
+ * \param trained_file trained model with extension *.caffemodel file
+ * \param mean_file image mean file
+ * \param label_file text file containing the categories and its labels
+ */
 Classifier::Classifier(const string& model_file,
                        const string& trained_file,
                        const string& mean_file,

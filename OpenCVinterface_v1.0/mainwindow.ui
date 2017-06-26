@@ -24,14 +24,14 @@
     <item>
      <layout class="QHBoxLayout" name="horizontalLayout">
       <item>
-       <widget class="QLabel" name="labelPath">
+       <widget class="QLabel" name="lPath">
         <property name="text">
          <string>Path:        </string>
         </property>
        </widget>
       </item>
       <item>
-       <widget class="QPlainTextEdit" name="txtpath">
+       <widget class="QPlainTextEdit" name="tePath">
         <property name="maximumSize">
          <size>
           <width>16777215</width>
@@ -44,7 +44,7 @@
        </widget>
       </item>
       <item>
-       <widget class="QPushButton" name="ButtonOpenImage">
+       <widget class="QPushButton" name="bOpenImage">
         <property name="text">
          <string>Open Image</string>
         </property>
@@ -62,7 +62,7 @@
     <item>
      <layout class="QHBoxLayout" name="horizontalLayout_8">
       <item>
-       <widget class="QLabel" name="lblimage">
+       <widget class="QLabel" name="qlImage">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
           <horstretch>0</horstretch>
@@ -125,14 +125,14 @@
         <item>
          <layout class="QHBoxLayout" name="horizontalLayout_2">
           <item>
-           <widget class="QLabel" name="cat1label">
+           <widget class="QLabel" name="lCat1">
             <property name="text">
              <string/>
             </property>
            </widget>
           </item>
           <item>
-           <widget class="QPushButton" name="cat1but">
+           <widget class="QPushButton" name="bCat1">
             <property name="enabled">
              <bool>false</bool>
             </property>
@@ -146,14 +146,14 @@
         <item>
          <layout class="QHBoxLayout" name="horizontalLayout_3">
           <item>
-           <widget class="QLabel" name="cat2label">
+           <widget class="QLabel" name="lCat2">
             <property name="text">
              <string/>
             </property>
            </widget>
           </item>
           <item>
-           <widget class="QPushButton" name="cat2but">
+           <widget class="QPushButton" name="bCat2">
             <property name="enabled">
              <bool>false</bool>
             </property>
@@ -167,14 +167,14 @@
         <item>
          <layout class="QHBoxLayout" name="horizontalLayout_4">
           <item>
-           <widget class="QLabel" name="cat3label">
+           <widget class="QLabel" name="lCat3">
             <property name="text">
              <string/>
             </property>
            </widget>
           </item>
           <item>
-           <widget class="QPushButton" name="cat3but">
+           <widget class="QPushButton" name="bCat3">
             <property name="enabled">
              <bool>false</bool>
             </property>
@@ -188,14 +188,14 @@
         <item>
          <layout class="QHBoxLayout" name="horizontalLayout_5">
           <item>
-           <widget class="QLabel" name="cat4label">
+           <widget class="QLabel" name="lCat4">
             <property name="text">
              <string/>
             </property>
            </widget>
           </item>
           <item>
-           <widget class="QPushButton" name="cat4but">
+           <widget class="QPushButton" name="bCat4">
             <property name="enabled">
              <bool>false</bool>
             </property>
@@ -209,14 +209,14 @@
         <item>
          <layout class="QHBoxLayout" name="horizontalLayout_6">
           <item>
-           <widget class="QLabel" name="cat5label">
+           <widget class="QLabel" name="lCat5">
             <property name="text">
              <string/>
             </property>
            </widget>
           </item>
           <item>
-           <widget class="QPushButton" name="cat5but">
+           <widget class="QPushButton" name="bCat5">
             <property name="enabled">
              <bool>false</bool>
             </property>
