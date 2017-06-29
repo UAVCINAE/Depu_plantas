@@ -1,3 +1,11 @@
+/** @file Source of the Classifier class
+ * @brief : This file belongs to the the C++ Caffe classifier class.
+ * It's original code can be found in caffe/examples/cpp_classification/classification.cpp
+ * @date : June 2017
+ * @author : Martín Bueno
+ * @version : 1.0
+ */
+
 #include "classifier.h"
 #include <caffe/caffe.hpp>
 
@@ -7,14 +15,14 @@ using namespace caffe;
 /* Pair (label, confidence) representing a prediction. */
 typedef std::pair<string, float> Prediction;
 
-/*!
- * \brief Classifier::Classifier
- * Single file classifier class
- * \param model_file deploy.prototxt file
- * \param trained_file trained model with extension *.caffemodel file
- * \param mean_file image mean file
- * \param label_file text file containing the categories and its labels
- */
+/**
+ * @brief Classifier::Classifier
+ * Classifier constructor
+ * @param model_file deploy.prototxt file
+ * @param trained_file trained model with extension *.caffemodel file
+ * @param mean_file image mean file
+ * @param label_file text file containing the categories and its labels
+ **/
 Classifier::Classifier(const string& model_file,
                        const string& trained_file,
                        const string& mean_file,
@@ -71,7 +79,13 @@ static std::vector<int> Argmax(const std::vector<float>& v, int N) {
   return result;
 }
 
-/* Return the top N predictions. */
+/**
+ * @brief Classifier::Classify
+ * Return the top N predictions
+ * @param img - The input image to be classified
+ * @param N - interger indicating the number of predictions to return
+ * @return array of predictions with N values.
+ */
 std::vector<Prediction> Classifier::Classify(const cv::Mat& img, int N) {
   std::vector<float> output = Predict(img);
 
@@ -86,7 +100,11 @@ std::vector<Prediction> Classifier::Classify(const cv::Mat& img, int N) {
   return predictions;
 }
 
-/* Load the mean file in binaryproto format. */
+/**
+ * @brief Classifier::SetMean
+ * Private function - Load the mean file in binaryproto format.
+ * @param mean_file - string containing the file name of the mean image
+ */
 void Classifier::SetMean(const string& mean_file) {
   BlobProto blob_proto;
   ReadProtoFromBinaryFileOrDie(mean_file.c_str(), &blob_proto);
@@ -117,6 +135,12 @@ void Classifier::SetMean(const string& mean_file) {
   mean_ = cv::Mat(input_geometry_, mean.type(), channel_mean);
 }
 
+/**
+ * @brief Classifier::Predict
+ * Private method - conducts the actual classification
+ * @param img - Mat image to be classified
+ * @return The classifier predictions
+ */
 std::vector<float> Classifier::Predict(const cv::Mat& img) {
   Blob<float>* input_layer = net_->input_blobs()[0];
   input_layer->Reshape(1, num_channels_,
@@ -138,11 +162,15 @@ std::vector<float> Classifier::Predict(const cv::Mat& img) {
   return std::vector<float>(begin, end);
 }
 
-/* Wrap the input layer of the network in separate cv::Mat objects
+/**
+ * @brief Classifier::WrapInputLayer
+ * Wrap the input layer of the network in separate cv::Mat objects
  * (one per channel). This way we save one memcpy operation and we
  * don't need to rely on cudaMemcpy2D. The last preprocessing
  * operation will write the separate channels directly to the input
- * layer. */
+ * layer.
+ * @param input_channels
+ */
 void Classifier::WrapInputLayer(std::vector<cv::Mat>* input_channels) {
   Blob<float>* input_layer = net_->input_blobs()[0];
 
@@ -156,9 +184,14 @@ void Classifier::WrapInputLayer(std::vector<cv::Mat>* input_channels) {
   }
 }
 
+/**
+ * @brief Classifier::Preprocess
+ * Convert the input image to the input image format of the network.
+ * @param img
+ * @param input_channels
+ */
 void Classifier::Preprocess(const cv::Mat& img,
                             std::vector<cv::Mat>* input_channels) {
-  /* Convert the input image to the input image format of the network. */
   cv::Mat sample;
   if (img.channels() == 3 && num_channels_ == 1)
     cv::cvtColor(img, sample, cv::COLOR_BGR2GRAY);
@@ -195,33 +228,3 @@ void Classifier::Preprocess(const cv::Mat& img,
         == net_->input_blobs()[0]->cpu_data())
     << "Input channels are not wrapping the input layer of the network.";
 }
-
-
-
-// ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
-/*
-// CShape.h
-class CShape
-{
-protected:
-    float area;
-    virtual void calcArea();
-public:
-    float getArea();
-}
-
-// CShape.cpp
-#include "CShape.h"
-#include <iostream>
-using namespace std;
-
-float CShape::getArea() {
-    return area;
-}
-
-*/
-// ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-
-
-
